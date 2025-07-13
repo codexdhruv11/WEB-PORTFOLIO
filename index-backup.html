@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhruv Kaushik | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --background-primary: #ffffff;
+            --background-secondary: #f8f9fa;
+            --background-tertiary: #e9ecef;
+            --color-primary: #212529;
+            --color-secondary: #495057;
+            --color-accent: #4361ee;
+            --color-link: #4361ee;
+            --border-primary: #dee2e6;
+            --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .dark-mode {
+            --background-primary: #121212;
+            --background-secondary: #1e1e1e;
+            --background-tertiary: #2d2d2d;
+            --color-primary: #f8f9fa;
+            --color-secondary: #adb5bd;
+            --color-accent: #4cc9f0;
+            --color-link: #4cc9f0;
+            --border-primary: #343a40;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            transition: var(--transition);
+        }
+
+        body {
+            background: var(--background-primary);
+            color: var(--color-primary);
+            font-size: 1rem;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+        }
+
+        h1 { font-size: 3rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.25rem; margin-bottom: 1.25rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        h4 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+
+        p {
+            color: var(--color-secondary);
+            margin-bottom: 1.25rem;
+            max-width: 650px;
+        }
+
+        a {
+            color: var(--color-link);
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-light);
+        }
+
+        .dark-mode header {
+            background: rgba(18, 18, 18, 0.95);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-link);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-left: 1rem;
+        }
+
+        .social-links a {
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(76, 201, 240, 0.05) 100%);
+            border-radius: 50%;
+            transform: scale(1.5);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--color-link);
+            margin-bottom: 2rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            background: var(--color-link);
+            color: white;
+            box-shadow: 0 4px 14px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-link);
+            border: 2px solid var(--color-link);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--color-link);
+            border-radius: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--background-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .project-image {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            background: var(--background-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-secondary);
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.75rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            margin-bottom: 0.75rem;
+        }
+
+        .project-description {
+            margin-bottom: 1.25rem;
+            flex: 1;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .project-date {
+            font-size: 0.875rem;
+            color: var(--color-secondary);
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--color-link);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--background-secondary);
+            border-radius: 12px;
+            padding: 1.75rem;
+            box-shadow: var(--shadow-light);
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: var(--background-tertiary);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-level {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease, background-color 0.5s ease;
+        }
+
+        .skill-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: none;
+            background: var(--background-tertiary);
+            color: var(--color-primary);
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .skill-btn:hover {
+            background: var(--color-link);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .skill-value {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .skill-slider {
+            width: 100%;
+            margin-top: 0.5rem;
+            -webkit-appearance: none;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--background-tertiary);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .skill-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--color-link);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .skill-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .skill-level[data-value="0-30"] { background-color: #ff4136; }
+        .skill-level[data-value="31-60"] { background-color: #ff851b; }
+        .skill-level[data-value="61-80"] { background-color: #ffdc00; }
+        .skill-level[data-value="81-100"] { background-color: #2ecc40; }
+
+        @media (max-width: 768px) {
+            .skill-controls {
+                flex-wrap: wrap;
+            }
+            .skill-btn {
+                width: 24px;
+                height: 24px;
+                font-size: 0.8rem;
+            }
+            .skill-value {
+                min-width: 35px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--color-link);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-input {
+            padding: 1rem;
+            border: 1px solid var(--border-primary);
+            border-radius: 8px;
+            background: var(--background-primary);
+            color: var(--color-primary);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            border-color: var(--color-link);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        footer {
+            background: var(--background-secondary);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .copyright {
+            color: var(--color-secondary);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 900px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .hero {
+                padding-top: 8rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-cta {
+                flex-direction: column;
+            }
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .project-image.interest {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .project-image.chatbot {
+            background: linear-gradient(135deg, #5c6bc0 0%, #3949ab 100%);
+            color: white;
+        }
+
+        .project-image.api {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #333;
+        }
+
+        .project-image.github {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: white;
+        }
+        
+        .project-image.face {
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+        }
+        
+        .project-image.analytics {
+            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="https://codexdhruv11.github.io/Portfolio/" class="logo">DK</a>
+            <nav>
+                <div>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/codexdhruv11" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dhruv-kaushik-1260541a7/" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <button class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate" style="animation-delay: 0.1s">
+                <h1 class="hero-title">Dhruv Kaushik</h1>
+                <h2 class="hero-subtitle">Backend Developer & AI Specialist</h2>
+                <p>
+                    I’m a Computer Science undergraduate who builds practical, effective solutions—whether it’s a web application, an automation workflow, or a streamlined system. I focus on making tools simpler, smarter, and more accessible. Continuously learning and exploring, my interests span full-stack development, automation, and emerging AI technologies.
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" style="background: var(--background-secondary);">
+        <div class="container">
+            <h2 class="section-title animate" style="animation-delay: 0.2s">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card animate" style="animation-delay: 0.3s">
+                    <div class="project-image interest">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Compound Interest Calculator</h3>
+                        <div class="tech-list">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Chart.js</span>
+                            <span class="tech-tag">HTML/CSS</span>
+                        </div>
+                        <p class="project-description">
+                            A modern, responsive compound interest calculator. Visualize investment growth with interactive charts by entering initial amount, monthly contributions, years, and interest rate.
+                        </p>
+                        <div class="project-meta">
+                            <span class="project-date">June 2024</span>
+                            <a href="https://github.com/codexdhruv11/COMPOUND-INTEREST-CALCULATOR" 
+                               class="btn btn-secondary" 
+                               style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card animate" style="animation-delay: 0.4s">
+                    <div class="project-image chatbot">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Nietzsche Chatbot</h3>
+                        <div class="tech-list">
+                            <span class="tech-tag">n8n</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">Chart.js</span>
+                        </div>
+                        <p class="project-description">
+                            Philosophical chatbot powered by React + Express. Converse with Nietzschean wisdom, export chats as PDFs, and explore ideas with interactive charts.
+                        </p>
+                        <div class="project-meta">
+                            <span class="project-date">May 2024</span>
+                            <a href="https://github.com/codexdhruv11/nietzsche-chatbot" 
+                               class="btn btn-secondary" 
+                               style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card animate" style="animation-delay: 0.5s">
+                    <div class="project-image api">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Product Store API</h3>
+                        <div class="tech-list">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                        <p class="project-description">
+                            Beginner-friendly RESTful API built with Node.js, Express, and MongoDB Atlas. Features CRUD operations, clean structure, and secure environment variables.
+                        </p>
+                        <div class="project-meta">
+                            <span class="project-date">April 2024</span>
+                            <a href="https://github.com/codexdhruv11/Product-Store" 
+                               class="btn btn-secondary" 
+                               style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card animate" style="animation-delay: 0.6s">
+                    <div class="project-image github">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">GitHub UI Clone</h3>
+                        <div class="tech-list">
+                            <span class="tech-tag">MERN Stack</span>
+                            <span class="tech-tag">OAuth</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Vite</span>
+                        </div>
+                        <p class="project-description">
+                            GitHub UI clone built with MERN stack featuring GitHub OAuth login, React + Vite frontend, and Tailwind CSS styling. Deployed via GitHub Pages.
+                        </p>
+                        <div class="project-meta">
+                            <span class="project-date">March 2024</span>
+                            <a href="https://github.com/codexdhruv11/GITHUB-CLONE" 
+                               class="btn btn-secondary" 
+                               style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card animate" style="animation-delay: 0.7s">
+                    <div class="project-image face">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Face Recognition System</h3>
+                        <div class="tech-list">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Computer Vision</span>
+                        </div>
+                        <p class="project-description">
+                            Real-time AI system for simultaneous face recognition and object detection with dynamic tracking and logging of detected faces and objects.
+                        </p>
+                        <div class="project-meta">
+                            <span class="project-date">May 2024</span>
+                            <a href="https://github.com/codexdhruv11/face-recognition" 
+                               class="btn btn-secondary" 
+                               style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card animate" style="animation-delay: 0.8s">
+                    <div class="project-image analytics">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Analytics Dashboard</h3>
+                        <div class="tech-list">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Chart.js</span>
+                            <span class="tech-tag">API Integration</span>
+                            <span class="tech-tag">Data Visualization</span>
+                        </div>
+                        <p class="project-description">
+                            Interactive, customizable real-time analytics dashboard designed to visualize dynamic data from any source including GitHub, APIs, IoT devices, and financial systems.
+                        </p>
+                        <div class="project-meta">
+                            <span class="project-date">April 2024</span>
+                            <a href="https://github.com/codexdhruv11/Analytics-Project" 
+                               class="btn btn-secondary" 
+                               style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title animate" style="animation-delay: 0.2s">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category animate" style="animation-delay: 0.3s">
+                    <h3>Backend Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Node.js</span>
+                            <div class="skill-controls">
+                                <button class="skill-btn skill-decrease">-</button>
+                                <span class="skill-value">90%</span>
+                                <button class="skill-btn skill-increase">+</button>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-value="81-100" style="width: 90%"></div>
+                        </div>
+                        <input type="range" min="0" max="100" value="90" class="skill-slider">
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>API Design (REST)</span>
+                            <div class="skill-controls">
+                                <button class="skill-btn skill-decrease">-</button>
+                                <span class="skill-value">85%</span>
+                                <button class="skill-btn skill-increase">+</button>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-value="81-100" style="width: 85%"></div>
+                        </div>
+                        <input type="range" min="0" max="100" value="85" class="skill-slider">
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Express.js</span>
+                            <div class="skill-controls">
+                                <button class="skill-btn skill-decrease">-</button>
+                                <span class="skill-value">80%</span>
+                                <button class="skill-btn skill-increase">+</button>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-value="81-100" style="width: 80%"></div>
+                        </div>
+                        <input type="range" min="0" max="100" value="80" class="skill-slider">
+                    </div>
+                </div>
+
+                <div class="skill-category animate" style="animation-delay: 0.4s">
+                    <h3>AI & Automation</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>n8n Workflows</span>
+                            <div class="skill-controls">
+                                <button class="skill-btn skill-decrease">-</button>
+                                <span class="skill-value">85%</span>
+                                <button class="skill-btn skill-increase">+</button>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-value="81-100" style="width: 85%"></div>
+                        </div>
+                        <input type="range" min="0" max="100" value="85" class="skill-slider">
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>GitHub OAuth / Passport.js</span>
+                            <div class="skill-controls">
+                                <button class="skill-btn skill-decrease">-</button>
+                                <span class="skill-value">75%</span>
+                                <button class="skill-btn skill-increase">+</button>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-value="61-80" style="width: 75%"></div>
+                        </div>
+                        <input type="range" min="0" max="100" value="75" class="skill-slider">
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>API Integration</span>
+                            <div class="skill-controls">
+                                <button class="skill-btn skill-decrease">-</button>
+                                <span class="skill-value">80%</span>
+                                <button class="skill-btn skill-increase">+</button>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-value="81-100" style="width: 80%"></div>
+                        </div>
+                        <input type="range" min="0" max="100" value="80" class="skill-slider">
+                    </div>
+                </div>
+
+                <div class="skill-category animate" style="animation-delay: 0.5s">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>JavaScript</span>
+                            <div class="skill-controls">
+                                <button class="skill-btn skill-decrease">-</button>
+                                <span class="skill-value">85%</span>
+                                <button class="skill-btn skill-increase">+</button>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-value="81-100" style="width: 85%"></div>
+                        </div>
+                        <input type="range" min="0" max="100" value="85" class="skill-slider">
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>React / Vite</span>
+                            <div class="skill-controls">
+                                <button class="skill-btn skill-decrease">-</button>
+                                <span class="skill-value">80%</span>
+                                <button class="skill-btn skill-increase">+</button>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-value="81-100" style="width: 80%"></div>
+                        </div>
+                        <input type="range" min="0" max="100" value="80" class="skill-slider">
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Cloud Hosting</span>
+                            <div class="skill-controls">
+                                <button class="skill-btn skill-decrease">-</button>
+                                <span class="skill-value">75%</span>
+                                <button class="skill-btn skill-increase">+</button>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" data-value="61-80" style="width: 75%"></div>
+                        </div>
+                        <input type="range" min="0" max="100" value="75" class="skill-slider">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background: var(--background-secondary);">
+        <div class="container">
+            <h2 class="section-title animate" style="animation-delay: 0.2s">Contact</h2>
+            <div class="contact-container">
+                <div class="contact-info animate" style="animation-delay: 0.3s">
+                    <h3>Get in touch</h3>
+                    <p>Feel free to reach out for collaborations or just a friendly hello</p>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>dhruvkaushik9457@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div>
+                            <h4>GitHub</h4>
+                            <p>github.com/codexdhruv11</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <p>linkedin.com/in/dhruv-kaushik</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form animate" id="contact-form" action="https://formsubmit.co/74eed9fc1e320c4bec4b303a3147ae8a" method="POST" style="animation-delay: 0.4s">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://codexdhruv11.github.io/portfolio/">
+                    <input type="hidden" name="_template" value="table">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" class="form-input" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">DK</div>
+                <div class="footer-links">
+                    <a href="#projects">Projects</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <p class="copyright">
+                    &copy; 2024 Dhruv Kaushik. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const body = document.body;
+        
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight * 0.85) {
+                    element.style.animationPlayState = 'running';
+                }
+            });
+        };
+        
+        animateOnScroll();
+        
+        window.addEventListener('scroll', animateOnScroll);
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        document.querySelectorAll('.skill-item').forEach(item => {
+            const decreaseBtn = item.querySelector('.skill-decrease');
+            const increaseBtn = item.querySelector('.skill-increase');
+            const valueDisplay = item.querySelector('.skill-value');
+            const progressBar = item.querySelector('.skill-level');
+            const slider = item.querySelector('.skill-slider');
+            
+            let value = parseInt(valueDisplay.textContent);
+            
+            function updateSkill() {
+                valueDisplay.textContent = value + '%';
+                progressBar.style.width = value + '%';
+                slider.value = value;
+                
+                let colorRange;
+                if (value <= 30) colorRange = '0-30';
+                else if (value <= 60) colorRange = '31-60';
+                else if (value <= 80) colorRange = '61-80';
+                else colorRange = '81-100';
+                
+                progressBar.setAttribute('data-value', colorRange);
+            }
+            
+            decreaseBtn.addEventListener('click', () => {
+                if (value > 0) {
+                    value--;
+                    updateSkill();
+                }
+            });
+            
+            increaseBtn.addEventListener('click', () => {
+                if (value < 100) {
+                    value++;
+                    updateSkill();
+                }
+            });
+            
+            slider.addEventListener('input', () => {
+                value = parseInt(slider.value);
+                updateSkill();
+            });
+            
+            updateSkill();
+        });
+    </script>
+</body>
+</html>
